@@ -1,3 +1,41 @@
----
-name: Kiera 
-Type: Github
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sre-monitor
+  functionalDomain: cloud_infra
+  annotations:
+    splunk.com/on-call-team: "Production SRE"
+    backstage.io/source-location: url:http://go/sre-monitor/repo
+  description: |
+    Allows you to provision a test bed composed of SCS tenants, users, and apps
+    and then periodically performs "steel thread" customer actions against those
+    resources to ensure basic end-to-end functionality.
+
+  tags:
+    - cloud-infra
+    - sre
+    - production-sre
+    - monitoring
+    - synthetic-monitoring
+
+  links:
+    - title: GitLab Project
+      url: http://go/sre-monitor/gitlab
+    - title: JIRA Project
+      url: http://go/sre-monitor/jira
+    - title: "Slack: #sre-monitor"
+      url: http://go/sre-monitor/slack
+    - title: Sprint Board
+      url: http://go/sre-monitor/sprint
+
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:production-sre
+  dependsOn:
+    - component:commerce
+    - component:provisioner-service
+    - component:iac-service
+    - component:app-registry
+    - component:vault
+
