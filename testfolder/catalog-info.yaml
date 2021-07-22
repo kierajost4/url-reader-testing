@@ -1,0 +1,38 @@
+  1 apiVersion: backstage.io/v1alpha1
+  2 kind: Component
+  3 metadata:
+  4   name: sre-monitor
+  5   functionalDomain: cloud_infra
+  6   annotations:
+  7     splunk.com/on-call-team: "Production SRE"
+  8     backstage.io/source-location: url:http://go/sre-monitor/repo
+  9   description: |
+ 12     resources to ensure basic end-to-end functionality.
+ 13
+ 14   tags:
+ 15     - cloud-infra
+ 16     - sre
+ 17     - production-sre
+ 18     - monitoring
+ 19     - synthetic-monitoring
+ 20
+ 21   links:
+ 22     - title: GitLab Project
+ 23       url: http://go/sre-monitor/gitlab
+ 24     - title: JIRA Project
+ 25       url: http://go/sre-monitor/jira
+ 26     - title: "Slack: #sre-monitor"
+ 27       url: http://go/sre-monitor/slack
+ 28     - title: Sprint Board
+ 29       url: http://go/sre-monitor/sprint
+ 30
+ 31 spec:
+ 32   type: service
+ 33   lifecycle: experimental
+ 34   owner: group:production-sre
+ 35   dependsOn:
+ 36     - component:commerce
+ 37     - component:provisioner-service
+ 38     - component:iac-service
+ 39     - component:app-registry
+ 40     - component:vault
